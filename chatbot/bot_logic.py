@@ -98,7 +98,4 @@ async def on_message(message):
         "9. **Evita el desperdicio de comida:** Planifica tus compras y aprovecha al máximo los alimentos.",
         "10. **Reutiliza y repara:** Da una segunda oportunidad a los objetos antes de desecharlos."
     ]
-    mensaje_acciones = "🌍 **10 acciones para cuidar el medio ambiente:**\n\n" + "\n".join(acciones)
-    await message.channel.send(mensaje_acciones)
-
 client.run("TU_TOKEN_AQUI")
