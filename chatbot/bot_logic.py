@@ -69,17 +69,14 @@ async def on_message(message):
     else:
       await message.channel.send(f'No se encontró la carpeta "{nombre_carpeta}".')
 
-  #conmando para enviar una imagen aleatoria de la api del perro
+  # Comando para enviar una imagen aleatoria de la API del perro
   if message.content.startswith('!perro'):
     try:
-      # Hacemos una petición GET a la API
       respuesta = requests.get('https://random.dog/woof.json')
       
-      # Verificamos que la petición fue exitosa (código 200)
       if respuesta.status_code == 200:
         datos = respuesta.json()
         url_imagen = datos['url']
-        
         
         await message.channel.send(url_imagen)
       else:
@@ -87,4 +84,21 @@ async def on_message(message):
     except Exception as e:
       await message.channel.send('Ocurrio un error inesperado al buscar la imagen.')
 
-client.run(¡EL TOKEN DE TU BOT DEBERÍA ESTAR AQUÍ)
+  #Acciones para cuidar el medio ambiente
+  if message.content.startswith('!naturaleza'):
+    acciones = [
+        "1. **Reduce el uso de plásticos de un solo uso:** Prefiere bolsas de tela y botellas reutilizables.",
+        "2. **Ahorra agua:** Cierra el grifo mientras te cepillas los dientes o lavas platos.",
+        "3. **Desconecta aparatos que no uses:** Evita el consumo fantasma de energía apagando cargadores.",
+        "4. **Separa los residuos:** Recicla correctamente el papel, cartón, plástico y vidrio.",
+        "5. **Usa transporte sostenible:** Camina, usa la bicicleta o comparte vehículo siempre que puedas.",
+        "6. **Cuida y planta areas verdes:** Fomenta la biodiversidad local cultivando plantas en casa.",
+        "7. **Ahorra electricidad:** Apaga las luces de las habitaciones que no estés utilizando.",
+        "8. **Consume local y de temporada:** Disminuye la huella de carbono asociada al transporte.",
+        "9. **Evita el desperdicio de comida:** Planifica tus compras y aprovecha al máximo los alimentos.",
+        "10. **Reutiliza y repara:** Da una segunda oportunidad a los objetos antes de desecharlos."
+    ]
+    mensaje_acciones = "🌍 **10 acciones para cuidar el medio ambiente:**\n\n" + "\n".join(acciones)
+    await message.channel.send(mensaje_acciones)
+
+client.run("TU_TOKEN_AQUI")
